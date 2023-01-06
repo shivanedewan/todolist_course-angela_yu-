@@ -1,0 +1,35 @@
+
+<%- include('header'); -%>
+    <div class="box" id="heading">
+        <h1>
+            <%= title%>
+        </h1>
+    </div>
+
+
+    <div class="box">
+        <%     for(var i=0;i<items_array.length;i++){ %>
+            <form action="/delete" method="post">
+            <div class="item">
+                <!-- submit form when checkbox is checked -->
+                <!-- when you click checkbox you have to see what value should be assigned -->
+                <!-- checkbox is not like a normal input -->
+                <input type="checkbox" onChange="this.form.submit()" name="checkbox" value="<%=items_array[i].name%>">
+                <p>
+                    <%=items_array[i].name%>
+                </p>
+            </div>
+            <input type="hidden" name="list_name" value="<%=title%>">
+        </form>
+            <%   }  %>
+    <form action="/" method="post" class="item">
+        <input type="text"  name="fnum" placeholder="new item" autocomplete="off"><br>
+        
+        <button type="submit" name="submit" value="<%=title%>" >
+            +
+        </button>
+        </form>
+
+    </div>
+    <%- include('footer'); -%>
+    
